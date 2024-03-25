@@ -7,7 +7,8 @@
     "build": "vue-tsc && vite build && electron-builder",
     "preview": "vite preview",
     "eslint": "eslint src --ext .js,.vue,.ts,.tsx --ignore-path .gitignore --fix",
-    "prettier": "prettier --write \"./**/*.{html,vue,ts,js,json,md}\""
+    "prettier": "prettier --write \"./**/*.{html,vue,ts,js,json,md}\"",
+    "prepare": "husky"
   },
   "dependencies": {
     "pinia": "^2.1.7",
@@ -35,5 +36,16 @@
     "vite-plugin-eslint": "^1.8.1",
     "vue-tsc": "^1.8.27"
   },
-  "main": "dist-electron/main.js"
+  "main": "dist-electron/main.js",
+  "husky": {
+    "hooks": {
+      "pre-commit": "bunx staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{ts,js,jsx,tsx,vue}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  }
 }
