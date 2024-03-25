@@ -1,0 +1,20 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "plugin:vue/vue3-recommended",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "vue-eslint-parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "parser": "@typescript-eslint/parser",
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint", "vue", "prettier"],
+  "rules": {}
+}
