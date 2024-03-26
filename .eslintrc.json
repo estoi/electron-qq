@@ -7,7 +7,8 @@
   "extends": [
     "plugin:@typescript-eslint/recommended",
     "plugin:vue/vue3-recommended",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "plugin:vue/vue3-essential"
   ],
   "parser": "vue-eslint-parser",
   "parserOptions": {
@@ -16,5 +17,8 @@
     "sourceType": "module"
   },
   "plugins": ["@typescript-eslint", "vue", "prettier"],
-  "rules": {}
+  "rules": {
+    "vue/multi-word-component-names": "off",
+    "@typescript-eslint/no-explicit-any": "off"
+  }
 }

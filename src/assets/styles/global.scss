@@ -1,0 +1,40 @@
+@font-face {
+  font-family: 'QQ';
+  src: url('@/assets/fonts/qq.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'oppo-sans';
+  src: url('@/assets/fonts/oppo-sans.woff') format('woff');
+}
+
+.qq-title {
+  font-family: 'QQ' !important;
+}
+
+* {
+  font-family: 'oppo-sans';
+}
+
+.linear-gradient {
+  background: linear-gradient(
+    90deg,
+    #020024,
+    #71c3ff 35%,
+    #aeacff 65%,
+    #f8a9ff
+  );
+}
+
+.var-tooltip__content-container {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow:
+    rgba(0, 0, 0, 0.07) 0px 1px 2px,
+    rgba(0, 0, 0, 0.07) 0px 2px 4px,
+    rgba(0, 0, 0, 0.07) 0px 4px 8px,
+    rgba(0, 0, 0, 0.07) 0px 8px 16px,
+    rgba(0, 0, 0, 0.07) 0px 16px 32px,
+    rgba(0, 0, 0, 0.07) 0px 32px 64px;
+  padding: 0;
+}

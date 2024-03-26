@@ -3,14 +3,26 @@ import path from 'node:path'
 import electron from 'vite-plugin-electron/simple'
 import vue from '@vitejs/plugin-vue'
 import UnoCSS from 'unocss/vite'
-import eslintPlugin from 'vite-plugin-eslint'
+import components from 'unplugin-vue-components/vite'
+import autoImport from 'unplugin-auto-import/vite'
+import { VarletImportResolver } from '@varlet/import-resolver'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
     UnoCSS(),
-    eslintPlugin(),
+    components({
+      resolvers: [VarletImportResolver()],
+    }),
+    autoImport({
+      imports: ['vue', 'vue-router', '@vueuse/core', 'pinia'],
+      resolvers: [
+        VarletImportResolver({
+          autoImport: true,
+        }),
+      ],
+    }),
     electron({
       main: {
         // Shortcut of `build.lib.entry`.

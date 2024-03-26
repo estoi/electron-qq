@@ -1,0 +1,71 @@
+@font-face {
+  font-family: 'iconfont'; /* Project id 4482106 */
+  src:
+    url('../fonts/iconfont.woff2?t=1711435042410') format('woff2'),
+    url('../fonts/iconfont.woff?t=1711435042410') format('woff'),
+    url('../fonts/iconfont.ttf?t=1711435042410') format('truetype');
+}
+
+.icon-font {
+  font-family: 'iconfont' !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-font-nan:before {
+  content: '\e612';
+}
+
+.icon-font-nv:before {
+  content: '\e64a';
+}
+
+.icon-font-dianzan:before {
+  content: '\e65e';
+}
+
+.icon-font-wenjianjia:before {
+  content: '\e6c9';
+}
+
+.icon-font-shoucang:before {
+  content: '\e615';
+}
+
+.icon-font-youxiang:before {
+  content: '\e61c';
+}
+
+.icon-font-gengduo:before {
+  content: '\e605';
+}
+
+.icon-font-haoyou:before {
+  content: '\e60c';
+}
+
+.icon-font-xiaoxi:before {
+  content: '\e6b2';
+}
+
+.icon-font-qzone:before {
+  content: '\e640';
+}
+
+.icon-font-caidan:before {
+  content: '\e624';
+}
+
+.icon-font-pindao:before {
+  content: '\e69c';
+}
+
+.icon-font-guanli:before {
+  content: '\e678';
+}
+
+.icon-font-tengxunwendang:before {
+  content: '\e71c';
+}

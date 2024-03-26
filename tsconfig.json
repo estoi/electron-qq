@@ -8,7 +8,8 @@
     "baseUrl": "./",
     "paths": {
       "@": ["src"],
-      "@/": ["src/*"]
+      "@/": ["src/*"],
+      "@/*": ["src/*"]
     },
 
     /* Bundler mode */
@@ -25,6 +26,14 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "electron"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "electron",
+    "auto-imports.d.ts",
+    "components.d.ts"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
