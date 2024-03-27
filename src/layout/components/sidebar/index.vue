@@ -1,12 +1,13 @@
 <script lang="ts" setup>
 import router from '@/router'
 import UserModal from '@/components/userModal/index.vue'
-import { RouteRecordRaw } from 'vue-router'
+import { useSidebarStore } from '@/store/modules/sidebar'
+import type { RouteRecordRaw } from 'vue-router'
 
 const _router = useRouter()
+const sidebarStore = useSidebarStore()
 
-const routes = router.options.routes.filter((i) => !i?.meta?.hidden)[0]
-  ?.children
+let routes = router.options.routes.filter((i) => !i?.meta?.hidden)[0]?.children
 
 const settings = [
   {
@@ -34,6 +35,8 @@ const handleClick = (route: RouteRecordRaw) => {
     _router.push(path)
   }
 }
+
+onMounted(() => {})
 </script>
 <template>
   <div
@@ -51,11 +54,26 @@ const handleClick = (route: RouteRecordRaw) => {
         text
         @click="handleClick(item)"
       >
-        <var-icon
-          :size="23"
-          namespace="icon-font"
-          :name="item.meta?.icon"
-        ></var-icon>
+        <var-badge
+          type="danger"
+          :max-value="99"
+          :value="sidebarStore.count"
+          :hidden="!item.meta?.badge"
+          :offset-x="-2"
+          :offset-y="2"
+          style="--badge-content-font-size: 8px"
+        >
+          <var-icon
+            :size="23"
+            namespace="icon-font"
+            :name="item.meta?.icon"
+            :color="
+              sidebarStore.selectedSidebar === item.path
+                ? 'var(--color-primary)'
+                : '#000'
+            "
+          ></var-icon>
+        </var-badge>
       </var-button>
     </var-space>
     <var-space

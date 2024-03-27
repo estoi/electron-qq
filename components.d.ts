@@ -14,6 +14,7 @@ declare module 'vue' {
     VarBadge: typeof import('@varlet/ui')['_BadgeComponent']
     VarButton: typeof import('@varlet/ui')['_ButtonComponent']
     VarCol: typeof import('@varlet/ui')['_ColComponent']
+    VarEllipsis: typeof import('@varlet/ui')['_EllipsisComponent']
     VarForm: typeof import('@varlet/ui')['_FormComponent']
     VarIcon: typeof import('@varlet/ui')['_IconComponent']
     VarImagePreview: typeof import('@varlet/ui')['_ImagePreviewComponent']
@@ -27,5 +28,8 @@ declare module 'vue' {
     VarTabs: typeof import('@varlet/ui')['_TabsComponent']
     VarTabsItems: typeof import('@varlet/ui')['_TabsItemsComponent']
     VarTooltip: typeof import('@varlet/ui')['_TooltipComponent']
+  }
+  export interface ComponentCustomProperties {
+    vHover: typeof import('@varlet/ui')['_HoverComponent']
   }
 }

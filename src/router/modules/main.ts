@@ -17,6 +17,7 @@ const routes: RouteRecordRaw[] = [
         meta: {
           icon: 'xiaoxi',
           trigger: 'router',
+          badge: true,
         },
       },
       {
@@ -26,6 +27,7 @@ const routes: RouteRecordRaw[] = [
         meta: {
           icon: 'haoyou',
           trigger: 'router',
+          badge: false,
         },
       },
       {
@@ -35,6 +37,7 @@ const routes: RouteRecordRaw[] = [
         meta: {
           icon: 'qzone',
           trigger: 'click',
+          badge: false,
         },
       },
       {
@@ -44,6 +47,7 @@ const routes: RouteRecordRaw[] = [
         meta: {
           icon: 'pindao',
           trigger: 'click',
+          badge: false,
         },
       },
       {
@@ -53,6 +57,7 @@ const routes: RouteRecordRaw[] = [
         meta: {
           icon: 'tengxunwendang',
           trigger: 'click',
+          badge: false,
         },
       },
       {
@@ -62,6 +67,7 @@ const routes: RouteRecordRaw[] = [
         meta: {
           icon: 'gengduo',
           trigger: 'click',
+          badge: false,
         },
       },
     ],

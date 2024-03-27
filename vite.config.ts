@@ -6,11 +6,28 @@ import UnoCSS from 'unocss/vite'
 import components from 'unplugin-vue-components/vite'
 import autoImport from 'unplugin-auto-import/vite'
 import { VarletImportResolver } from '@varlet/import-resolver'
+import { viteMockServe } from 'vite-plugin-mock'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:5173',
+        changeOrigin: true,
+        ws: true,
+        rewrite: (path) => path.replace(new RegExp(`^/api`), ''),
+      },
+    },
+  },
   plugins: [
-    vue(),
+    vue({
+      template: {
+        transformAssetUrls: {
+          'var-avatar': ['src'],
+        },
+      },
+    }),
     UnoCSS(),
     components({
       resolvers: [VarletImportResolver()],
@@ -22,6 +39,11 @@ export default defineConfig({
           autoImport: true,
         }),
       ],
+    }),
+    viteMockServe({
+      mockPath: './mock/modules',
+      logger: true,
+      enable: true,
     }),
     electron({
       main: {

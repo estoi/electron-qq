@@ -6,6 +6,7 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
     "baseUrl": "./",
+    "types": ["vite/client"],
     "paths": {
       "@": ["src"],
       "@/": ["src/*"],
@@ -31,9 +32,11 @@
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
+    "mock/**/*.ts",
     "electron",
     "auto-imports.d.ts",
-    "components.d.ts"
+    "components.d.ts",
+    "types/**/*.d.ts"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

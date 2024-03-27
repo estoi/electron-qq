@@ -22,3 +22,8 @@ app.mount('#app').$nextTick(() => {
     console.log(message)
   })
 })
+if (process.env.NODE_ENV !== 'production') {
+  import('../mock/_createProductionServer').then(({ setupProdMockServer }) => {
+    setupProdMockServer()
+  })
+}

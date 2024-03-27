@@ -9,7 +9,6 @@ const show = ref(false)
 const images = ['https://varlet.gitee.io/varlet-ui/cat.jpg']
 
 const openImage = () => {
-  console.log('open image')
   show.value = true
 }
 </script>
@@ -39,7 +38,7 @@ const openImage = () => {
       <div class="w-300px h-350px relative">
         <img
           class="w-full h-full object-fill absolute top-0 left-0"
-          src="@/assets/images/bg.png"
+          src="/src/assets/images/bg.png"
           alt=""
         />
         <div
