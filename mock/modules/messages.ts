@@ -1,5 +1,5 @@
 import { MockMethod } from 'vite-plugin-mock'
-import Mock, { Random } from 'mockjs'
+import Mock from 'mockjs'
 
 interface MessagesItem {
   text: string
@@ -81,9 +81,11 @@ export default [
     method: 'post',
     response: ({ query }) => {
       const { id } = query
-      console.log(id)
       const index = messages.findIndex((i) => i.id === id)
       messages[index].unreadCount = 0
+      for (let i = 0; i < messages[index].list.length; i++) {
+        messages[index].list[i].read = true
+      }
       return {
         code: 200,
         data: {},
