@@ -88,3 +88,9 @@ QQ9的高仿版, 欢迎Star
 ```bash
 bun run dev
 ```
+
+## License
+
+[MIT](https://github.com/estoi/electron-qq/blob/master/LICENSE)
+
+Copyright (c) 2024-present 
