@@ -1,5 +1,15 @@
 <script lang="ts" setup>
 import { Splitpanes, Pane } from 'splitpanes'
+
+const show: Ref<boolean> = ref(false)
+const drawer: Ref<Element | undefined> = ref()
+const isTop: Ref<boolean> = ref(false)
+const isNotice: Ref<boolean> = ref(false)
+const isShield: Ref<boolean> = ref(false)
+
+const openDrawer = () => {
+  show.value = true
+}
 </script>
 <template>
   <div class="chat h-screen w-full pt-30px">
@@ -62,6 +72,7 @@ import { Splitpanes, Pane } from 'splitpanes'
           <var-button
             text
             size="small"
+            @click="openDrawer()"
           >
             <var-icon
               namespace="icon-font"
@@ -73,12 +84,17 @@ import { Splitpanes, Pane } from 'splitpanes'
       </div>
     </div>
     <var-divider />
-    <div style="height: calc(100vh - 80px)">
+    <div
+      ref="drawer"
+      style="height: calc(100vh - 80px)"
+    >
       <splitpanes
         horizontal
         class="h-full default-theme"
       >
-        <pane></pane>
+        <pane>
+          <div></div>
+        </pane>
         <pane
           min-size="25"
           max-size="45"
@@ -193,9 +209,74 @@ import { Splitpanes, Pane } from 'splitpanes'
                 </var-tooltip>
               </div>
             </div>
+            <div class="h-130px p-15px">
+              <textarea
+                class="w-full h-full bg-transparent border-none outline-none resize-none"
+              ></textarea>
+            </div>
           </div>
         </pane>
       </splitpanes>
     </div>
+    <var-popup
+      v-model:show="show"
+      position="right"
+      :overlay-style="{
+        backgroundColor: 'transparent',
+      }"
+      class="w-300px"
+      close-on-key-escape
+      :teleport="drawer"
+    >
+      <div class="bg-#f2f2f2 h-full p-15px">
+        <div class="bg-white rounded-10px p-[10px_15px]">
+          <div class="h-30px flex flex-items-center justify-between">
+            <p class="font-size-14px">设为置顶</p>
+            <var-switch
+              v-model="isTop"
+              size="15"
+            />
+          </div>
+          <var-divider />
+          <div class="h-40px flex flex-items-center justify-between">
+            <p class="font-size-14px">消息免打扰</p>
+            <var-switch
+              v-model="isNotice"
+              size="15"
+            />
+          </div>
+        </div>
+        <div class="bg-white mt-25px rounded-10px p-[10px_15px]">
+          <div class="h-30px flex flex-items-center justify-between">
+            <p class="font-size-14px">屏蔽此人</p>
+            <var-switch
+              v-model="isShield"
+              size="15"
+            />
+          </div>
+        </div>
+        <div class="bg-white mt-25px rounded-10px p-[10px_15px]">
+          <div class="h-30px flex flex-items-center justify-between">
+            <p class="font-size-14px">删除聊天记录</p>
+          </div>
+        </div>
+        <div class="bg-white mt-25px rounded-10px p-[10px_15px]">
+          <div class="h-30px flex flex-items-center justify-center">
+            <p class="font-size-14px color-red">删除好友</p>
+          </div>
+        </div>
+        <p class="pt-30px color-primary font-size-10px text-center">
+          被骚扰了？举报该用户
+        </p>
+      </div>
+    </var-popup>
   </div>
 </template>
+<style lang="scss">
+.chat {
+  .var-popup__content {
+    height: calc(100vh - 30px - 30px - 8px);
+    top: 68px;
+  }
+}
+</style>

@@ -13,10 +13,6 @@ const images = ['https://varlet.gitee.io/varlet-ui/cat.jpg']
 const openImage = () => {
   show.value = true
 }
-
-nextTick(() => {
-  console.log(props.target)
-})
 </script>
 
 <template>

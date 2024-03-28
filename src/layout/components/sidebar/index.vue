@@ -30,10 +30,12 @@ const settings = [
 ]
 
 const handleClick = (route: RouteRecordRaw) => {
-  const { path, meta } = route
+  const { name, meta } = route
   const { trigger } = meta || {}
   if (trigger === 'router') {
-    _router.push(path)
+    _router.push({
+      name,
+    })
   }
 }
 </script>
@@ -68,7 +70,7 @@ const handleClick = (route: RouteRecordRaw) => {
             namespace="icon-font"
             :name="item.meta?.icon"
             :color="
-              sidebarStore.selectedSidebar === item.path
+              sidebarStore.selectedSidebar === item.name
                 ? 'var(--color-primary)'
                 : '#000'
             "
