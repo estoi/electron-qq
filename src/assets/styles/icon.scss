@@ -1,9 +1,9 @@
 @font-face {
   font-family: 'iconfont'; /* Project id 4482106 */
   src:
-    url('../fonts/iconfont.woff2?t=1711435042410') format('woff2'),
-    url('../fonts/iconfont.woff?t=1711435042410') format('woff'),
-    url('../fonts/iconfont.ttf?t=1711435042410') format('truetype');
+    url('../fonts/iconfont.woff2?t=1711587150571') format('woff2'),
+    url('../fonts/iconfont.woff?t=1711587150571') format('woff'),
+    url('../fonts/iconfont.ttf?t=1711587150571') format('truetype');
 }
 
 .icon-font {
@@ -12,6 +12,58 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-font-biaoqing:before {
+  content: '\e600';
+}
+
+.icon-font-wenjian:before {
+  content: '\e67c';
+}
+
+.icon-font-jietu:before {
+  content: '\e685';
+}
+
+.icon-font-hongbao:before {
+  content: '\e8b0';
+}
+
+.icon-font-tupian:before {
+  content: '\e8ba';
+}
+
+.icon-font-yuyin:before {
+  content: '\e8c0';
+}
+
+.icon-font-doudong:before {
+  content: '\e732';
+}
+
+.icon-font-liaotianjilu:before {
+  content: '\e606';
+}
+
+.icon-font-gongxiang:before {
+  content: '\e66e';
+}
+
+.icon-font-ellipsis:before {
+  content: '\eb10';
+}
+
+.icon-font-yuyintonghua:before {
+  content: '\e668';
+}
+
+.icon-font-shipintonghua:before {
+  content: '\e632';
+}
+
+.icon-font-chuangjianqunliao:before {
+  content: '\e80d';
 }
 
 .icon-font-nan:before {

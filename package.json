@@ -19,6 +19,7 @@
     "axios": "^1.6.8",
     "date-fns": "^3.6.0",
     "pinia": "^2.1.7",
+    "splitpanes": "^3.1.5",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0",
     "vue-sonner": "^1.1.2"

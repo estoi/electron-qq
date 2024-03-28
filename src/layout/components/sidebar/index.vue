@@ -35,11 +35,10 @@ const handleClick = (route: RouteRecordRaw) => {
     _router.push(path)
   }
 }
-
-onMounted(() => {})
 </script>
 <template>
   <div
+    id="tooltip"
     class="h-screen w-full bg-#e8e8e9 pt-50px flex flex-col flex-items-center"
   >
     <user-modal></user-modal>

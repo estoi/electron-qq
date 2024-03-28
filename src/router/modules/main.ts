@@ -19,6 +19,14 @@ const routes: RouteRecordRaw[] = [
           trigger: 'router',
           badge: true,
         },
+        redirect: '/main/message/chat',
+        children: [
+          {
+            path: 'chat',
+            name: 'Chat',
+            component: () => import('@/views/main/message/chat/index.vue'),
+          },
+        ],
       },
       {
         path: 'friend',

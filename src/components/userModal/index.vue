@@ -15,10 +15,10 @@ const openImage = () => {
 
 <template>
   <var-tooltip
-    content="Tooltip"
     placement="right-end"
     trigger="click"
     color="#fff"
+    teleport="#tooltip"
   >
     <var-badge
       style="--badge-dot-width: 12px; --badge-dot-height: 12px"
@@ -35,7 +35,7 @@ const openImage = () => {
       />
     </var-badge>
     <template #content>
-      <div class="w-300px h-350px relative">
+      <div class="user-modal w-300px h-350px relative">
         <img
           class="w-full h-full object-fill absolute top-0 left-0"
           src="/src/assets/images/bg.png"
@@ -184,3 +184,19 @@ const openImage = () => {
     :images="images"
   />
 </template>
+<style lang="scss">
+:root {
+  --tooltip-padding: 0;
+  --tooltip-border-radius: 10px;
+  .var-tooltip__content-container {
+    overflow: hidden;
+    box-shadow:
+      rgba(0, 0, 0, 0.07) 0px 1px 2px,
+      rgba(0, 0, 0, 0.07) 0px 2px 4px,
+      rgba(0, 0, 0, 0.07) 0px 4px 8px,
+      rgba(0, 0, 0, 0.07) 0px 8px 16px,
+      rgba(0, 0, 0, 0.07) 0px 16px 32px,
+      rgba(0, 0, 0, 0.07) 0px 32px 64px;
+  }
+}
+</style>

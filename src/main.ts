@@ -7,6 +7,8 @@ import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import '@unocss/reset/normalize.css'
 import '@/assets/styles/index.scss'
 
+import 'splitpanes/dist/splitpanes.css'
+
 import 'virtual:uno.css'
 
 const app = createApp(App)

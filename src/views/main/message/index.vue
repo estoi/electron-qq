@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import { useHttp } from '@/utils/http'
 import { useSidebarStore } from '@/store/modules/sidebar'
+import { useMessagesStore } from '@/store/modules/messages'
 import { format } from 'date-fns'
 
+const router = useRouter()
 const messages = ref()
 const sidebarStore = useSidebarStore()
+const messagesStore = useMessagesStore()
 
-const openChat = async (item: any) => {
+const openChat = async (item: any, index: number) => {
   const { isFinished } = await useHttp('/readMessage', {
     method: 'POST',
     params: {
@@ -14,7 +17,12 @@ const openChat = async (item: any) => {
     },
   })
   if (isFinished.value) {
-    getList()
+    await getList()
+    const id = messages.value[index].id
+    messagesStore.setActive(id)
+    router.push({
+      name: 'Chat',
+    })
   }
 }
 
@@ -40,7 +48,10 @@ onMounted(() => {
 })
 </script>
 <template>
-  <div class="h-screen w-full absolute top-0">
+  <div
+    class="h-screen w-full absolute top-0"
+    style="width: calc(100% - 8.33333333%)"
+  >
     <var-row class="h-full">
       <var-col
         class="h-full bg-white"
@@ -86,13 +97,16 @@ onMounted(() => {
           style="height: calc(100% - 30px - 30px - 50px)"
         >
           <div
-            v-for="item of messages"
+            v-for="(item, index) of messages"
             :key="item.id"
             v-hover="{
               background: '#f2f2f2',
             }"
-            class="h-70px p-[0_20px] flex flex-items-center cursor-pointer"
-            @click="openChat(item)"
+            :class="[
+              'message-item h-70px p-[0_20px] flex flex-items-center cursor-pointer',
+              messagesStore.active === item.id ? 'active' : '',
+            ]"
+            @click="openChat(item, index)"
           >
             <var-avatar
               :size="42"
@@ -103,7 +117,12 @@ onMounted(() => {
                 {{ item.otherName }}
               </p>
               <var-ellipsis
-                class="font-size-10px color-gray"
+                :class="[
+                  'font-size-10px',
+                  messagesStore.active === item.id
+                    ? 'color-white'
+                    : 'color-gray',
+                ]"
                 style="width: 110px"
                 :tooltip="false"
               >
@@ -112,7 +131,7 @@ onMounted(() => {
             </div>
             <div class="h-42px pt-5px text-center">
               <p class="color-gray font-size-8px mb-5px">
-                {{ format(item.list[item.list.length - 1]?.time, 'HH:mm:ss') }}
+                {{ format(item.list[item.list.length - 1]?.time, 'HH:mm') }}
               </p>
               <var-badge
                 :max-value="99"
@@ -125,7 +144,20 @@ onMounted(() => {
           </div>
         </div>
       </var-col>
-      <var-col :span="18"></var-col>
+      <var-col :span="18">
+        <router-view></router-view>
+      </var-col>
     </var-row>
   </div>
 </template>
+<style lang="scss" scoped>
+.message-item {
+  &.active {
+    background-color: var(--color-primary) !important;
+    color: #fff !important;
+    p {
+      color: #fff !important;
+    }
+  }
+}
+</style>
