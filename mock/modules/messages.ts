@@ -14,39 +14,49 @@ interface ListItem {
   otherName: string
   otherAvatar: string
   group: boolean
-  unreadCount?: number
   list: Array<MessagesItem>
 }
+let allCounts: number = 0
 
-let allCounts: number
+const getAllCount = (list: Array<ListItem>) => {
+  allCounts = 0
+  list.forEach((item: ListItem) => {
+    item.list.forEach((i) => {
+      if (!i.isMe && !i.read) {
+        allCounts++
+      }
+    })
+  })
+}
+
 const messages = <ListItem[]>[
   {
-    id: Mock.mock('@id'),
+    id: 1,
     otherName: '搬砖仔',
     otherAvatar: '/src/assets/images/avatar-2.jpg',
     group: false,
     list: [
       {
-        text: '@csentence(5, 10)',
+        text: 'Hello',
         time: Mock.mock('@now'),
         isMe: false,
         read: false,
       },
       {
-        text: '@csentence(5, 10)',
+        text: '你好',
         time: Mock.mock('@now'),
         isMe: true,
       },
     ],
   },
   {
-    id: Mock.mock('@id'),
+    id: 2,
     otherName: '搬砖仔2',
-    otherAvatar: '/src/assets/images/avatar-1.jpg',
+    otherAvatar: '/src/assets/images/avatar-3.jpg',
     group: false,
     list: [
       {
-        text: '@csentence(5, 10)',
+        text: '大师兄，大事不好了',
         time: Mock.mock('@now'),
         isMe: false,
         read: true,
@@ -60,19 +70,20 @@ export default [
     url: '/api/messages',
     method: 'get',
     response: () => {
-      allCounts = 0
-      messages.forEach((item: ListItem, index: number) => {
-        let count: number = 0
-        item.list &&
-          item.list.forEach((i) => {
-            !i.read && count++
-          })
-        messages[index].unreadCount = count
-        allCounts += item.unreadCount || 0
-      })
       return {
         code: 200,
-        data: { messages, allCounts },
+        data: { messages },
+      }
+    },
+  },
+  {
+    url: '/api/getAllCount',
+    method: 'get',
+    response: () => {
+      getAllCount(messages)
+      return {
+        code: 200,
+        data: { allCounts },
       }
     },
   },
@@ -81,10 +92,12 @@ export default [
     method: 'post',
     response: ({ query }) => {
       const { id } = query
-      const index = messages.findIndex((i) => i.id === id)
-      messages[index].unreadCount = 0
+      const index = messages.findIndex((i) => i.id === Number(id))
       for (let i = 0; i < messages[index].list.length; i++) {
-        messages[index].list[i].read = true
+        if (!messages[index].list[i].isMe) {
+          messages[index].list[i].read = true
+        }
+        getAllCount(messages)
       }
       return {
         code: 200,

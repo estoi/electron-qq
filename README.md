@@ -1,18 +1,89 @@
-# Vue 3 + TypeScript + Vite
+<p align="center">
+<a href="https://github.com/estoi/electron-qq" target="_blank">
+    <img width="180" src="./src/assets/images/readme/product-icon.png" alt="logo">
+  </a>
+</p>
+<p align="center">
+  <a href="https://github.com/vuejs/vue">
+    <img src="https://img.shields.io/badge/vue-3.x-brightgreen.svg" alt="vue">
+  </a>
+  <a href="https://cn.vitejs.dev/">
+    <img src="https://img.shields.io/badge/vite-5.x-blue" alt="vite">
+  </a>
+  <a href="https://www.electronjs.org/zh/">
+    <img src="https://img.shields.io/badge/electron-29.0-brightgreen" alt="electron">
+  </a>
+   <a href="https://pinia.vuejs.org/">
+    <img src="https://img.shields.io/badge/pinia-2.x-brightgreen" alt="pinia">
+   </a>
+   <a href="https://varlet.gitee.io/varlet-ui/#/zh-CN/index">
+    <img src="https://img.shields.io/badge/varlet/ui-3.x-blue" alt="varlet-ui">
+   </a>
+   <a href="https://unocss.dev/">
+    <img src="https://img.shields.io/badge/unocss-0.58.7-blue" alt="unocss">
+   </a>
+   <a href="https://www.typescriptlang.org/">
+    <img src="https://img.shields.io/badge/typescript-5.2.2-blue" alt="typescript">
+   </a>
+   <a href="https://bun.sh/">
+    <img src="https://img.shields.io/badge/bun-1.0.29-blue" alt="bun">
+   </a>
+   
+</p>
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+> 一个基于`Electron+Vite`开发的QQ9的高仿版
 
-## Recommended IDE Setup
+## 简介
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+QQ9的高仿版, 欢迎Star
 
-## Type Support For `.vue` Imports in TS
+项目目的:
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+- 学习vue3+ts
+- 学习electron
+- 学习unocss
+- 等等...
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+## 功能
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+```text
+- 登录
+- 聊天(开发中)
+- 其他待开发
+```
+
+## 截图
+
+<img src="./src/assets/images/readme/login.png">
+<img src="./src/assets/images/readme/home-1.png">
+<img src="./src/assets/images/readme/chat.png">
+<img src="./src/assets/images/readme/chat-2.png">
+
+## 目录结构
+
+```
+├─ .prettierrc.cjs    # prettier
+├─ README.md
+├─ dist               # 打包dist
+├─ mock               # mock服务
+├─ public             # 静态资源
+├─ types              # ts 声明
+├─ src                # 源码
+│  ├─ assets          # 静态资源
+│  ├─ components      # 公共组件
+│  ├─ layout          # 全局Layout
+│  ├─ router          # 路由
+│  ├─ store           # 全局store管理
+│  ├─ utils           # 全局公共方法
+│  └─ views           # 所有业务页面
+├─ bunfig.toml        # bun 下载源
+├─ tsconfig.json      # ts 编译配置
+├─ unocss.config.ts   # unocss 配置
+└─ vite.config.ts     # vite 配置
+```
+
+## 启动项目
+
+```bash
+bun run dev
+```

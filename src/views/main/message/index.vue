@@ -6,10 +6,12 @@ import { format } from 'date-fns'
 
 const router = useRouter()
 const messages = ref()
+const chat = ref()
+const showDefault: Ref<boolean> = ref(true)
 const sidebarStore = useSidebarStore()
 const messagesStore = useMessagesStore()
 
-const openChat = async (item: any, index: number) => {
+const openChat = async (item: any) => {
   const { isFinished } = await useHttp('/readMessage', {
     method: 'POST',
     params: {
@@ -17,30 +19,46 @@ const openChat = async (item: any, index: number) => {
     },
   })
   if (isFinished.value) {
+    showDefault.value = false
     await getList()
-    const id = messages.value[index].id
-    messagesStore.setActive(id)
+    messagesStore.setActive(item.id)
+    chat.value = {
+      list: [...item.list],
+      otherName: item.otherName,
+      otherAvatar: item.otherAvatar,
+    }
     router.push({
       name: 'Chat',
     })
   }
 }
 
+const handleCount = (list: any) => {
+  let count = 0
+  list.forEach((item: any) => {
+    if (!item.isMe && !item.read) {
+      count++
+    }
+  })
+  return count
+}
+
 const getList = async () => {
-  const { data, isFinished } = await useHttp('/messages', {
+  const { data } = await useHttp('/messages', {
     method: 'GET',
   })
-  if (isFinished.value) {
-    const { data: res } = data.value
-    messages.value = [...res.messages]
-    messages.value.forEach((item: any) => {
-      item.list.sort(
-        (a: any, b: any) =>
-          (new Date(a.time) as any) - (new Date(b.time) as any)
-      )
-    })
-    sidebarStore.setCount(res.allCounts)
-  }
+  const { data: _data } = await useHttp('/getAllCount', {
+    method: 'GET',
+  })
+  const { data: res } = data.value
+  const { data: _res } = _data.value
+  messages.value = [...res.messages]
+  messages.value.forEach((item: any) => {
+    item.list.sort(
+      (a: any, b: any) => (new Date(a.time) as any) - (new Date(b.time) as any)
+    )
+  })
+  sidebarStore.setCount(_res.allCounts)
 }
 
 onMounted(() => {
@@ -97,7 +115,7 @@ onMounted(() => {
           style="height: calc(100% - 30px - 30px - 50px)"
         >
           <div
-            v-for="(item, index) of messages"
+            v-for="item of messages"
             :key="item.id"
             v-hover="{
               background: '#f2f2f2',
@@ -106,7 +124,7 @@ onMounted(() => {
               'message-item h-70px p-[0_20px] flex flex-items-center cursor-pointer',
               messagesStore.active === item.id ? 'active' : '',
             ]"
-            @click="openChat(item, index)"
+            @click="openChat(item)"
           >
             <var-avatar
               :size="42"
@@ -137,15 +155,34 @@ onMounted(() => {
                 :max-value="99"
                 type="danger"
                 style="--badge-content-font-size: 8px"
-                :hidden="!(item.unreadCount > 0)"
-                :value="item.unreadCount"
+                :hidden="!(handleCount(item.list) > 0)"
+                :value="handleCount(item.list)"
               ></var-badge>
             </div>
           </div>
         </div>
       </var-col>
       <var-col :span="18">
-        <router-view></router-view>
+        <div
+          v-if="showDefault"
+          class="h-screen w-full flex flex-items-center justify-center"
+        >
+          <var-icon
+            :size="100"
+            namespace="icon-font"
+            name="qq"
+            color="#e9e9e9"
+          ></var-icon>
+        </div>
+        <router-view
+          v-else
+          v-slot="{ Component }"
+        >
+          <component
+            :is="Component"
+            :chat="chat"
+          ></component>
+        </router-view>
       </var-col>
     </var-row>
   </div>

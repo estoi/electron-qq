@@ -1,12 +1,33 @@
 <script lang="ts" setup>
 import { Splitpanes, Pane } from 'splitpanes'
+import { useUserStore } from '@/store/modules/user'
 
+const props = defineProps({
+  chat: {
+    type: Object as Undefined,
+    required: true,
+  },
+})
+
+const userStore = useUserStore()
+
+const arr = ref()
+const otherName: Ref<string> = ref('')
+const otherAvatar: Ref<string> = ref('')
 const show: Ref<boolean> = ref(false)
 const drawer: Ref<Element | undefined> = ref()
 const isTop: Ref<boolean> = ref(false)
 const isNotice: Ref<boolean> = ref(false)
 const isShield: Ref<boolean> = ref(false)
 
+onUpdated(() => {
+  if (props?.chat) {
+    otherName.value = props.chat.otherName
+    otherAvatar.value = props.chat.otherAvatar
+
+    arr.value = [...props?.chat.list]
+  }
+})
 const openDrawer = () => {
   show.value = true
 }
@@ -17,7 +38,7 @@ const openDrawer = () => {
       class="box-border h-30px flex flex-items-center justify-between p-[0px_20px]"
     >
       <div>
-        <p class="font-size-14px font-bold">{{ 'Windy' }}</p>
+        <p class="font-size-14px font-bold">{{ otherName }}</p>
       </div>
       <div>
         <var-space :size="[0, 0]">
@@ -93,7 +114,44 @@ const openDrawer = () => {
         class="h-full default-theme"
       >
         <pane>
-          <div></div>
+          <div class="h-full overflow-y-scroll p-[10px_20px]">
+            <div
+              v-for="(item, index) of arr"
+              :key="index"
+              :class="[
+                'mb-10px flex flex-items-start',
+                item.isMe ? 'justify-end' : '',
+              ]"
+            >
+              <template v-if="!item.isMe">
+                <var-avatar
+                  :size="30"
+                  :src="otherAvatar"
+                ></var-avatar>
+                <div class="ml-10px">
+                  <p class="font-size-10px color-gray mb-5px">
+                    {{ otherName }}
+                  </p>
+                  <p class="bg-white p-[10px_8px] rounded-15px font-size-12px">
+                    {{ item.text }}
+                  </p>
+                </div>
+              </template>
+              <template v-if="item.isMe">
+                <div class="mr-10px">
+                  <p
+                    class="color-white bg-primary p-[10px_8px] rounded-15px font-size-12px"
+                  >
+                    {{ item.text }}
+                  </p>
+                </div>
+                <var-avatar
+                  :size="30"
+                  :src="userStore.user.avatar"
+                ></var-avatar>
+              </template>
+            </div>
+          </div>
         </pane>
         <pane
           min-size="25"

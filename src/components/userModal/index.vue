@@ -1,12 +1,20 @@
 <script lang="ts" setup>
+import { useUserStore } from '@/store/modules/user'
+
 import crown from '@/assets/images/crown.png'
 import sun from '@/assets/images/sun.png'
 import moon from '@/assets/images/moon.png'
 import star from '@/assets/images/star.png'
 import svip from '@/assets/images/svip.png'
 
-const props = defineProps(['target'])
+const props = defineProps({
+  target: {
+    required: true,
+    type: Element,
+  },
+})
 
+const userStore = useUserStore()
 const show = ref(false)
 const images = ['https://varlet.gitee.io/varlet-ui/cat.jpg']
 
@@ -32,7 +40,7 @@ const openImage = () => {
     >
       <var-avatar
         class="cursor-pointer"
-        src="https://varlet.gitee.io/varlet-ui/cat.jpg"
+        :src="userStore.user.avatar"
         :size="40"
       />
     </var-badge>
@@ -49,7 +57,7 @@ const openImage = () => {
           <div class="flex flex-items-center">
             <var-avatar
               class="cursor-pointer"
-              src="https://varlet.gitee.io/varlet-ui/cat.jpg"
+              :src="userStore.user.avatar"
               :size="60"
               @click="openImage"
             />

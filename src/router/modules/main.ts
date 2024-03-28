@@ -19,7 +19,6 @@ const routes: RouteRecordRaw[] = [
           trigger: 'router',
           badge: true,
         },
-        redirect: '/main/message/chat',
         children: [
           {
             path: 'chat',

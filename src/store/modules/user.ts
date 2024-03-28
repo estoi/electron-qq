@@ -1,10 +1,18 @@
+interface UserInfo {
+  name: string
+  svip: boolean
+  qq: string
+  password: string
+  avatar: string
+}
+
 export const useUserStore = defineStore('user', {
   persist: true,
   state: () => ({
-    user: {},
+    user: {} as UserInfo,
   }),
   actions: {
-    setUserInfo(user: object) {
+    setUserInfo(user: UserInfo) {
       this.user = { ...user }
     },
   },
