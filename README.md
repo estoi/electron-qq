@@ -54,14 +54,15 @@ QQ9的高仿版, 欢迎Star
 
 ## 截图
 
-<img src="./src/assets/images/readme/login.png">
-<img src="./src/assets/images/readme/home-1.png">
-<img src="./src/assets/images/readme/chat.png">
-<img src="./src/assets/images/readme/chat-2.png">
+<img width="300" src="./src/assets/images/readme/login.png">
+<img width="400" src="./src/assets/images/readme/home-1.png">
+<img width="400" src="./src/assets/images/readme/chat.png">
+<img width="400" src="./src/assets/images/readme/chat-2.png">
 
 ## 目录结构
 
 ```
+├─ .eslintrc.json     # eslint
 ├─ .prettierrc.cjs    # prettier
 ├─ README.md
 ├─ dist               # 打包dist
