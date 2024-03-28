@@ -31,7 +31,7 @@
    
 </p>
 
-> 一个基于`Electron+Vite+Vue3`开发的QQ9的高仿版
+> 一个基于`Electron+Vite+Vue3`开发的QQ9的高仿版客户端
 
 ## 简介
 
