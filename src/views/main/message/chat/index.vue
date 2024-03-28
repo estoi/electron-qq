@@ -11,46 +11,54 @@ import { Splitpanes, Pane } from 'splitpanes'
       </div>
       <div>
         <var-space :size="[0, 0]">
-          <var-button
-            text
-            size="small"
-          >
-            <var-icon
-              namespace="icon-font"
-              name="yuyintonghua"
-              :size="20"
-            ></var-icon>
-          </var-button>
-          <var-button
-            text
-            size="small"
-          >
-            <var-icon
-              namespace="icon-font"
-              name="shipintonghua"
-              :size="20"
-            ></var-icon>
-          </var-button>
-          <var-button
-            text
-            size="small"
-          >
-            <var-icon
-              namespace="icon-font"
-              name="gongxiang"
-              :size="20"
-            ></var-icon>
-          </var-button>
-          <var-button
-            text
-            size="small"
-          >
-            <var-icon
-              namespace="icon-font"
-              name="chuangjianqunliao"
-              :size="20"
-            ></var-icon>
-          </var-button>
+          <var-tooltip content="语音通话">
+            <var-button
+              text
+              size="small"
+            >
+              <var-icon
+                namespace="icon-font"
+                name="yuyintonghua"
+                :size="20"
+              ></var-icon>
+            </var-button>
+          </var-tooltip>
+          <var-tooltip content="视频通话">
+            <var-button
+              text
+              size="small"
+            >
+              <var-icon
+                namespace="icon-font"
+                name="shipintonghua"
+                :size="20"
+              ></var-icon>
+            </var-button>
+          </var-tooltip>
+          <var-tooltip content="屏幕共享">
+            <var-button
+              text
+              size="small"
+            >
+              <var-icon
+                namespace="icon-font"
+                name="gongxiang"
+                :size="20"
+              ></var-icon>
+            </var-button>
+          </var-tooltip>
+          <var-tooltip content="发起群聊">
+            <var-button
+              text
+              size="small"
+            >
+              <var-icon
+                namespace="icon-font"
+                name="chuangjianqunliao"
+                :size="20"
+              ></var-icon>
+            </var-button>
+          </var-tooltip>
           <var-button
             text
             size="small"
@@ -93,80 +101,96 @@ import { Splitpanes, Pane } from 'splitpanes'
                       ></var-icon>
                     </var-button>
                   </var-tooltip>
-
-                  <var-button
-                    text
-                    size="small"
-                  >
-                    <var-icon
-                      namespace="icon-font"
-                      name="jietu"
-                      :size="20"
-                    ></var-icon>
-                  </var-button>
-                  <var-button
-                    text
-                    size="small"
-                  >
-                    <var-icon
-                      namespace="icon-font"
-                      name="wenjian"
-                      :size="20"
-                    ></var-icon>
-                  </var-button>
-                  <var-button
-                    text
-                    size="small"
-                  >
-                    <var-icon
-                      namespace="icon-font"
-                      name="tupian"
-                      :size="20"
-                    ></var-icon>
-                  </var-button>
-                  <var-button
-                    text
-                    size="small"
-                  >
-                    <var-icon
-                      namespace="icon-font"
-                      name="doudong"
-                      :size="20"
-                    ></var-icon>
-                  </var-button>
-                  <var-button
-                    text
-                    size="small"
-                  >
-                    <var-icon
-                      namespace="icon-font"
-                      name="hongbao"
-                      :size="20"
-                    ></var-icon>
-                  </var-button>
-                  <var-button
-                    text
-                    size="small"
-                  >
-                    <var-icon
-                      namespace="icon-font"
-                      name="yuyin"
-                      :size="20"
-                    ></var-icon>
-                  </var-button>
+                  <var-tooltip content="截图">
+                    <var-button
+                      text
+                      size="small"
+                    >
+                      <var-icon
+                        namespace="icon-font"
+                        name="jietu"
+                        :size="20"
+                      ></var-icon>
+                    </var-button>
+                  </var-tooltip>
+                  <var-tooltip content="文件">
+                    <var-button
+                      text
+                      size="small"
+                    >
+                      <var-icon
+                        namespace="icon-font"
+                        name="wenjian"
+                        :size="20"
+                      ></var-icon>
+                    </var-button>
+                  </var-tooltip>
+                  <var-tooltip content="图片">
+                    <var-button
+                      text
+                      size="small"
+                    >
+                      <var-icon
+                        namespace="icon-font"
+                        name="tupian"
+                        :size="20"
+                      ></var-icon>
+                    </var-button>
+                  </var-tooltip>
+                  <var-tooltip content="窗口抖动">
+                    <var-button
+                      text
+                      size="small"
+                    >
+                      <var-icon
+                        namespace="icon-font"
+                        name="doudong"
+                        :size="20"
+                      ></var-icon>
+                    </var-button>
+                  </var-tooltip>
+                  <var-tooltip content="红包">
+                    <var-button
+                      text
+                      size="small"
+                    >
+                      <var-icon
+                        namespace="icon-font"
+                        name="hongbao"
+                        :size="20"
+                      ></var-icon>
+                    </var-button>
+                  </var-tooltip>
+                  <var-tooltip content="语音">
+                    <var-button
+                      text
+                      size="small"
+                    >
+                      <var-icon
+                        namespace="icon-font"
+                        name="yuyin"
+                        :size="20"
+                      ></var-icon>
+                    </var-button>
+                  </var-tooltip>
                 </var-space>
               </div>
               <div>
-                <var-button
-                  text
-                  size="small"
+                <var-tooltip
+                  content="聊天记录"
+                  placement="bottom-start"
                 >
-                  <var-icon
-                    namespace="icon-font"
-                    name="liaotianjilu"
-                    :size="20"
-                  ></var-icon>
-                </var-button>
+                  <var-button
+                    text
+                    size="small"
+                  >
+                    <var-icon
+                      namespace="icon-font"
+                      name="liaotianjilu"
+                      :size="20"
+                    ></var-icon>
+                  </var-button>
+                </var-tooltip>
               </div>
             </div>
           </div>
@@ -175,8 +199,3 @@ import { Splitpanes, Pane } from 'splitpanes'
     </div>
   </div>
 </template>
-<style lang="scss">
-:root {
-  --tooltip-padding: 6px 8px;
-}
-</style>

@@ -4,6 +4,7 @@ import UserModal from '@/components/userModal/index.vue'
 import { useSidebarStore } from '@/store/modules/sidebar'
 import type { RouteRecordRaw } from 'vue-router'
 
+const tooltip = ref()
 const _router = useRouter()
 const sidebarStore = useSidebarStore()
 
@@ -38,10 +39,10 @@ const handleClick = (route: RouteRecordRaw) => {
 </script>
 <template>
   <div
-    id="tooltip"
-    class="h-screen w-full bg-#e8e8e9 pt-50px flex flex-col flex-items-center"
+    ref="tooltip"
+    class="custom-tooltip h-screen w-full bg-#e8e8e9 pt-50px flex flex-col flex-items-center"
   >
-    <user-modal></user-modal>
+    <user-modal :target="tooltip"></user-modal>
     <var-space
       direction="column"
       size="large"
@@ -93,3 +94,19 @@ const handleClick = (route: RouteRecordRaw) => {
     </var-space>
   </div>
 </template>
+<style lang="scss">
+.custom-tooltip {
+  .var-tooltip__content-container {
+    border-radius: 10px !important;
+    overflow: hidden;
+    box-shadow:
+      rgba(0, 0, 0, 0.07) 0px 1px 2px,
+      rgba(0, 0, 0, 0.07) 0px 2px 4px,
+      rgba(0, 0, 0, 0.07) 0px 4px 8px,
+      rgba(0, 0, 0, 0.07) 0px 8px 16px,
+      rgba(0, 0, 0, 0.07) 0px 16px 32px,
+      rgba(0, 0, 0, 0.07) 0px 32px 64px;
+    padding: 0 !important;
+  }
+}
+</style>
