@@ -83,13 +83,13 @@ export const useMessagesStore = defineStore('messages', () => {
   const sendMessage = (item: any) => {
     const { id, ...other } = item
     const index = dataSource.list.findIndex((i: any) => i.id === Number(id))
+    dataSource.list[index].list.push({ ...other })
     dataSource.list[index].list.push({
       text: Mock.mock('@csentence(5)'),
       time: Mock.mock('@now'),
       isMe: false,
       read: true,
     })
-    dataSource.list[index].list.push({ ...other })
   }
 
   watch(

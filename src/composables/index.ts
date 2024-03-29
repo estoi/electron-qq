@@ -1,6 +1,6 @@
 type Fn = (...args: any[]) => void
 
-export const useThrottle = (fn: Fn, wait: number = 500): Fn => {
+export const useThrottle = (fn: Fn, wait: number = 150): Fn => {
   let timeout: NodeJS.Timeout | null = null
 
   // 返回新的函数
@@ -15,7 +15,7 @@ export const useThrottle = (fn: Fn, wait: number = 500): Fn => {
   }
 }
 
-export const useDebounce = (fn: Fn, wait: number = 500): Fn => {
+export const useDebounce = (fn: Fn, wait: number = 150): Fn => {
   let timeout: NodeJS.Timeout | null = null
 
   // 返回一个新的函数，用于处理延迟调用

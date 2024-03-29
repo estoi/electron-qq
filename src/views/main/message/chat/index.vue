@@ -35,6 +35,7 @@ onUpdated(() => {
     id.value = props.chat.id
     arr.value = [...props?.chat.list]
   }
+  y.value = 0
 })
 
 watch(messagesStore.dataSource.list, (v) => {
