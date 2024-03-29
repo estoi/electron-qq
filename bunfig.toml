@@ -1,2 +1,5 @@
 [install]
 registry = "https://registry.npmmirror.com/"
+
+[run]
+electron_mirror=https://npm.taobao.org/mirrors/electron/

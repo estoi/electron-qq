@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "@iconify-json/mdi": "^1.1.64",
+    "@types/splitpanes": "^2.2.6",
     "@typescript-eslint/eslint-plugin": "^7.3.1",
     "@typescript-eslint/parser": "^7.3.1",
     "@unocss/reset": "^0.58.6",

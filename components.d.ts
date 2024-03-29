@@ -14,7 +14,6 @@ declare module 'vue' {
     VarAvatar: typeof import('@varlet/ui')['_AvatarComponent']
     VarBadge: typeof import('@varlet/ui')['_BadgeComponent']
     VarButton: typeof import('@varlet/ui')['_ButtonComponent']
-    VarCell: typeof import('@varlet/ui')['_CellComponent']
     VarCol: typeof import('@varlet/ui')['_ColComponent']
     VarDivider: typeof import('@varlet/ui')['_DividerComponent']
     VarEllipsis: typeof import('@varlet/ui')['_EllipsisComponent']
@@ -25,14 +24,9 @@ declare module 'vue' {
     VarMenu: typeof import('@varlet/ui')['_MenuComponent']
     VarPopup: typeof import('@varlet/ui')['_PopupComponent']
     VarRadio: typeof import('@varlet/ui')['_RadioComponent']
-    VarRadioGroup: (typeof import('@varlet/ui'))['_RadioGroupComponent']
     VarRow: typeof import('@varlet/ui')['_RowComponent']
     VarSpace: typeof import('@varlet/ui')['_SpaceComponent']
     VarSwitch: typeof import('@varlet/ui')['_SwitchComponent']
-    VarTab: typeof import('@varlet/ui')['_TabComponent']
-    VarTabItem: typeof import('@varlet/ui')['_TabItemComponent']
-    VarTabs: typeof import('@varlet/ui')['_TabsComponent']
-    VarTabsItems: typeof import('@varlet/ui')['_TabsItemsComponent']
     VarTooltip: typeof import('@varlet/ui')['_TooltipComponent']
   }
   export interface ComponentCustomProperties {

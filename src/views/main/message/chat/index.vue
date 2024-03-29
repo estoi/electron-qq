@@ -4,7 +4,7 @@ import { useUserStore } from '@/store/modules/user'
 
 const props = defineProps({
   chat: {
-    type: Object as Undefined,
+    type: Object,
     required: true,
   },
 })

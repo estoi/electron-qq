@@ -25,7 +25,7 @@ function createWindow() {
     height: 450,
     resizable: false,
     titleBarStyle: 'hidden',
-    icon: path.join(process.env.VITE_PUBLIC, 'electron-vite.svg'),
+    icon: path.join(process.env.VITE_PUBLIC, 'product-icon.png'),
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true,
@@ -80,6 +80,7 @@ ipcMain.handle('open-win', (_, arg) => {
     titleBarStyle: 'hidden',
     titleBarOverlay: true,
     resizable: false,
+    icon: path.join(process.env.VITE_PUBLIC, 'product-icon.png'),
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true,

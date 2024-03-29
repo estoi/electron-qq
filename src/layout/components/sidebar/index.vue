@@ -2,11 +2,13 @@
 import router from '@/router'
 import UserModal from '@/components/userModal/index.vue'
 import { useSidebarStore } from '@/store/modules/sidebar'
+import { useMessagesStore } from '@/store/modules/messages'
 import type { RouteRecordRaw } from 'vue-router'
 
 const tooltip = ref()
 const _router = useRouter()
 const sidebarStore = useSidebarStore()
+const messageStore = useMessagesStore()
 
 let routes = router.options.routes.filter((i) => !i?.meta?.hidden)[0]?.children
 
@@ -32,6 +34,7 @@ const settings = [
 const handleClick = (route: RouteRecordRaw) => {
   const { name, meta } = route
   const { trigger } = meta || {}
+  messageStore.setActive('')
   if (trigger === 'router') {
     _router.push({
       name,
