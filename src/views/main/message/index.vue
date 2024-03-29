@@ -1,36 +1,25 @@
 <script setup lang="ts">
-import { useHttp } from '@/utils/http'
-import { useSidebarStore } from '@/store/modules/sidebar'
 import { useMessagesStore } from '@/store/modules/messages'
 import { format } from 'date-fns'
 
 const router = useRouter()
-const messages = ref()
 const chat = ref()
 const showDefault: Ref<boolean> = ref(true)
-const sidebarStore = useSidebarStore()
 const messagesStore = useMessagesStore()
 
 const openChat = async (item: any) => {
-  const { isFinished } = await useHttp('/readMessage', {
-    method: 'POST',
-    params: {
-      id: item.id,
-    },
-  })
-  if (isFinished.value) {
-    showDefault.value = false
-    await getList()
-    messagesStore.setActive(item.id)
-    chat.value = {
-      list: [...item.list],
-      otherName: item.otherName,
-      otherAvatar: item.otherAvatar,
-    }
-    router.push({
-      name: 'Chat',
-    })
+  await messagesStore.readMessage(item.id)
+  showDefault.value = false
+  messagesStore.setActive(item.id)
+  chat.value = {
+    list: [...item.list],
+    id: item.id,
+    otherName: item.otherName,
+    otherAvatar: item.otherAvatar,
   }
+  router.push({
+    name: 'Chat',
+  })
 }
 
 const handleCount = (list: any) => {
@@ -42,28 +31,6 @@ const handleCount = (list: any) => {
   })
   return count
 }
-
-const getList = async () => {
-  const { data } = await useHttp('/messages', {
-    method: 'GET',
-  })
-  const { data: _data } = await useHttp('/getAllCount', {
-    method: 'GET',
-  })
-  const { data: res } = data.value
-  const { data: _res } = _data.value
-  messages.value = [...res.messages]
-  messages.value.forEach((item: any) => {
-    item.list.sort(
-      (a: any, b: any) => (new Date(a.time) as any) - (new Date(b.time) as any)
-    )
-  })
-  sidebarStore.setCount(_res.allCounts)
-}
-
-onMounted(() => {
-  getList()
-})
 </script>
 <template>
   <div
@@ -115,7 +82,7 @@ onMounted(() => {
           style="height: calc(100% - 30px - 30px - 50px)"
         >
           <div
-            v-for="item of messages"
+            v-for="item of messagesStore.dataSource.list"
             :key="item.id"
             v-hover="{
               background: '#f2f2f2',

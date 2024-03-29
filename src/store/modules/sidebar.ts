@@ -5,7 +5,6 @@ export const useSidebarStore = defineStore(
   () => {
     const selectedSidebar: Ref<string> = ref('Message')
     const sidebarIncludes = ['Message', 'Friend']
-    const count = ref(0)
 
     router.beforeEach((to: any) => {
       const { name = '' } = to
@@ -19,14 +18,8 @@ export const useSidebarStore = defineStore(
       }
     })
 
-    const setCount = (num: any) => {
-      count.value = num
-    }
-
     return {
       selectedSidebar,
-      count,
-      setCount,
     }
   },
   {

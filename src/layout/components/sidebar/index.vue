@@ -8,7 +8,7 @@ import type { RouteRecordRaw } from 'vue-router'
 const tooltip = ref()
 const _router = useRouter()
 const sidebarStore = useSidebarStore()
-const messageStore = useMessagesStore()
+const messagesStore = useMessagesStore()
 
 let routes = router.options.routes.filter((i) => !i?.meta?.hidden)[0]?.children
 
@@ -34,7 +34,7 @@ const settings = [
 const handleClick = (route: RouteRecordRaw) => {
   const { name, meta } = route
   const { trigger } = meta || {}
-  messageStore.setActive('')
+  messagesStore.setActive('')
   if (trigger === 'router') {
     _router.push({
       name,
@@ -65,8 +65,8 @@ const handleClick = (route: RouteRecordRaw) => {
           <var-badge
             type="danger"
             :max-value="99"
-            :value="sidebarStore.count"
-            :hidden="!item.meta?.badge || !sidebarStore.count"
+            :value="messagesStore.dataSource.allCounts"
+            :hidden="!item.meta?.badge || !messagesStore.dataSource.allCounts"
             :offset-x="-2"
             :offset-y="2"
             style="--badge-content-font-size: 8px"

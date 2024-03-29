@@ -20,6 +20,7 @@
       {
         target: 'nsis',
         arch: ['x64'],
+        icon: '/public/product-icon.png',
       },
     ],
     artifactName: '${productName}-Windows-${version}-Setup.${ext}',
@@ -33,5 +34,6 @@
   linux: {
     target: ['AppImage'],
     artifactName: '${productName}-Linux-${version}.${ext}',
+    icon: '/public/product-icon.png',
   },
 }

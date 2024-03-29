@@ -1,6 +1,9 @@
 <script lang="ts" setup>
+import Mock from 'mockjs'
 import { Splitpanes, Pane } from 'splitpanes'
 import { useUserStore } from '@/store/modules/user'
+import { useMessagesStore } from '@/store/modules/messages'
+import { useDebounce } from '@/composables'
 
 const props = defineProps({
   chat: {
@@ -10,8 +13,11 @@ const props = defineProps({
 })
 
 const userStore = useUserStore()
+const messagesStore = useMessagesStore()
 
+const id = ref()
 const arr = ref()
+const content: Ref<string> = ref('')
 const otherName: Ref<string> = ref('')
 const otherAvatar: Ref<string> = ref('')
 const show: Ref<boolean> = ref(false)
@@ -19,17 +25,48 @@ const drawer: Ref<Element | undefined> = ref()
 const isTop: Ref<boolean> = ref(false)
 const isNotice: Ref<boolean> = ref(false)
 const isShield: Ref<boolean> = ref(false)
+const scrollEl = ref<HTMLElement | null>(null)
+const { y } = useScroll(scrollEl, { behavior: 'smooth' })
 
 onUpdated(() => {
   if (props?.chat) {
     otherName.value = props.chat.otherName
     otherAvatar.value = props.chat.otherAvatar
-
+    id.value = props.chat.id
     arr.value = [...props?.chat.list]
   }
 })
+
+watch(messagesStore.dataSource.list, (v) => {
+  const index = v.findIndex((i) => i.id === id.value)
+  arr.value = [...v[index].list]
+})
+
 const openDrawer = () => {
   show.value = true
+}
+
+const onEnter = (e: any) => {
+  e.preventDefault()
+  useDebounce(() => {
+    const lastEl = <HTMLElement>(
+      document.querySelectorAll('.item')[
+        document.querySelectorAll('.item').length - 1
+      ]
+    )
+    !!content.value &&
+      messagesStore.sendMessage({
+        id: id.value,
+        text: content.value,
+        time: Mock.mock('@now'),
+        read: true,
+        isMe: true,
+      })
+    content.value = ''
+    nextTick(() => {
+      y.value = lastEl.offsetTop - 320
+    })
+  })()
 }
 </script>
 <template>
@@ -114,12 +151,15 @@ const openDrawer = () => {
         class="h-full default-theme"
       >
         <pane>
-          <div class="h-full overflow-y-scroll p-[10px_20px]">
+          <div
+            ref="scrollEl"
+            class="h-full overflow-y-scroll p-[10px_20px]"
+          >
             <div
               v-for="(item, index) of arr"
               :key="index"
               :class="[
-                'mb-10px flex flex-items-start',
+                'item mb-10px flex flex-items-start',
                 item.isMe ? 'justify-end' : '',
               ]"
             >
@@ -269,7 +309,9 @@ const openDrawer = () => {
             </div>
             <div class="h-130px p-15px">
               <textarea
+                v-model="content"
                 class="w-full h-full bg-transparent border-none outline-none resize-none"
+                @keydown.enter="onEnter"
               ></textarea>
             </div>
           </div>
