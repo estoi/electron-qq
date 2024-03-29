@@ -1,8 +1,9 @@
 <p align="center">
-<a href="https://github.com/estoi/electron-qq" target="_blank">
+  <a href="https://github.com/estoi/electron-qq" target="_blank">
     <img width="180" src="./src/assets/images/readme/product-icon.png" alt="logo">
   </a>
 </p>
+
 <p align="center">
   <a href="https://github.com/vuejs/vue">
     <img src="https://img.shields.io/badge/vue-3.x-brightgreen.svg" alt="vue">

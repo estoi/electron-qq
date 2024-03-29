@@ -65,7 +65,7 @@ const openImage = () => {
               class="h-60px color-black ml-15px flex flex-col justify-between"
             >
               <div class="flex flex-items-center">
-                <span class="mr-10px">Windy</span>
+                <span class="mr-10px">{{ userStore.user.name }}</span>
                 <var-icon
                   :size="18"
                   namespace="icon-font"

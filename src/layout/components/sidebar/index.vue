@@ -50,33 +50,75 @@ const handleClick = (route: RouteRecordRaw) => {
       size="large"
       class="mt-10px"
     >
-      <var-button
+      <template
         v-for="item of routes"
         :key="item.path"
-        text
-        @click="handleClick(item)"
       >
-        <var-badge
-          type="danger"
-          :max-value="99"
-          :value="sidebarStore.count"
-          :hidden="!item.meta?.badge || !sidebarStore.count"
-          :offset-x="-2"
-          :offset-y="2"
-          style="--badge-content-font-size: 8px"
+        <var-button
+          v-if="item.meta?.icon !== 'gengduo'"
+          text
+          @click="handleClick(item)"
         >
-          <var-icon
-            :size="23"
-            namespace="icon-font"
-            :name="item.meta?.icon"
-            :color="
-              sidebarStore.selectedSidebar === item.name
-                ? 'var(--color-primary)'
-                : '#000'
-            "
-          ></var-icon>
-        </var-badge>
-      </var-button>
+          <var-badge
+            type="danger"
+            :max-value="99"
+            :value="sidebarStore.count"
+            :hidden="!item.meta?.badge || !sidebarStore.count"
+            :offset-x="-2"
+            :offset-y="2"
+            style="--badge-content-font-size: 8px"
+          >
+            <var-icon
+              :size="23"
+              namespace="icon-font"
+              :name="item.meta?.icon"
+              :color="
+                sidebarStore.selectedSidebar === item.name
+                  ? 'var(--color-primary)'
+                  : '#000'
+              "
+            ></var-icon>
+          </var-badge>
+        </var-button>
+        <var-menu
+          v-else
+          placement="right"
+          trigger="hover"
+          :offset-x="10"
+        >
+          <var-button
+            text
+            @click="handleClick(item)"
+          >
+            <var-icon
+              :size="23"
+              namespace="icon-font"
+              :name="item.meta?.icon"
+              :color="
+                sidebarStore.selectedSidebar === item.name
+                  ? 'var(--color-primary)'
+                  : '#000'
+              "
+            ></var-icon>
+          </var-button>
+
+          <template #menu>
+            <div class="p-[5px_10px]">
+              <var-button
+                text
+                size="small"
+              >
+                <var-icon
+                  size="14"
+                  namespace="icon-font"
+                  name="guanli"
+                ></var-icon>
+                <span class="ml-5px">管理</span>
+              </var-button>
+            </div>
+          </template>
+        </var-menu>
+      </template>
     </var-space>
     <var-space
       direction="column"
@@ -109,6 +151,7 @@ const handleClick = (route: RouteRecordRaw) => {
       rgba(0, 0, 0, 0.07) 0px 16px 32px,
       rgba(0, 0, 0, 0.07) 0px 32px 64px;
     padding: 0 !important;
+    opacity: 1;
   }
 }
 </style>
