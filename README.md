@@ -32,7 +32,7 @@
    
 </p>
 
-> 一个基于`Electron+Vite`开发的QQ9的高仿版
+> 一个基于`Electron+Vite+Vue3`开发的QQ9的高仿版客户端
 
 ## 简介
 
@@ -55,14 +55,15 @@ QQ9的高仿版, 欢迎Star
 
 ## 截图
 
-<img src="./src/assets/images/readme/login.png">
-<img src="./src/assets/images/readme/home-1.png">
-<img src="./src/assets/images/readme/chat.png">
-<img src="./src/assets/images/readme/chat-2.png">
+<img width="300" src="./src/assets/images/readme/login.png">
+<img width="400" src="./src/assets/images/readme/home-1.png">
+<img width="400" src="./src/assets/images/readme/chat.png">
+<img width="400" src="./src/assets/images/readme/chat-2.png">
 
 ## 目录结构
 
 ```
+├─ .eslintrc.json     # eslint
 ├─ .prettierrc.cjs    # prettier
 ├─ README.md
 ├─ dist               # 打包dist
@@ -88,3 +89,9 @@ QQ9的高仿版, 欢迎Star
 ```bash
 bun run dev
 ```
+
+## License
+
+[MIT](https://github.com/estoi/electron-qq/blob/master/LICENSE)
+
+Copyright (c) 2024-present 
