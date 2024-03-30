@@ -1,4 +1,8 @@
 import Mock from 'mockjs'
+
+import avatar2 from '@/assets/images/avatar-2.jpg'
+import avatar3 from '@/assets/images/avatar-3.jpg'
+// import avatar4 from '@/assets/images/avatar-4.jpg'
 interface MessagesItem {
   text: string
   time: number
@@ -22,7 +26,7 @@ export const useMessagesStore = defineStore('messages', () => {
       {
         id: 1,
         otherName: '搬砖仔',
-        otherAvatar: '/src/assets/images/avatar-2.jpg',
+        otherAvatar: avatar2,
         group: false,
         list: [
           {
@@ -41,7 +45,7 @@ export const useMessagesStore = defineStore('messages', () => {
       {
         id: 2,
         otherName: '搬砖仔2',
-        otherAvatar: '/src/assets/images/avatar-3.jpg',
+        otherAvatar: avatar3,
         group: false,
         list: [
           {

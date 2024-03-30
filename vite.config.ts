@@ -11,9 +11,10 @@ import { viteMockServe } from 'vite-plugin-mock'
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
+    port: 9527,
     proxy: {
       '/api': {
-        target: 'http://localhost:5173',
+        target: 'http://localhost:9527',
         changeOrigin: true,
         ws: true,
         rewrite: (path) => path.replace(new RegExp(`^/api`), ''),
@@ -22,11 +23,11 @@ export default defineConfig({
   },
   plugins: [
     vue({
-      template: {
-        transformAssetUrls: {
-          'var-avatar': ['src'],
-        },
-      },
+      // template: {
+      //   transformAssetUrls: {
+      //     'var-avatar': ['src'],
+      //   },
+      // },
     }),
     UnoCSS(),
     components({
@@ -45,6 +46,14 @@ export default defineConfig({
       logger: true,
       enable: true,
     }),
+    // viteStaticCopy({
+    //   targets: [
+    //     {
+    //       src: 'src/assets',
+    //       dest: 'dist/assets',
+    //     },
+    //   ],
+    // }),
     electron({
       main: {
         // Shortcut of `build.lib.entry`.

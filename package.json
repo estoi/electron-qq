@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && vite build && electron-builder",
+    "build": "vite build && electron-builder",
     "preview": "vite preview",
     "eslint": "eslint src --ext .js,.vue,.ts,.tsx --ignore-path .gitignore --fix",
     "prettier": "prettier --write \"./**/*.{html,vue,ts,js,json,md}\"",

@@ -1,5 +1,7 @@
 import { MockMethod } from 'vite-plugin-mock'
 
+import userAvatar from '@/assets/images/avatar-1.jpg'
+
 interface UserInfo {
   name: string
   svip: boolean
@@ -13,7 +15,7 @@ const userInfo: UserInfo = {
   svip: true,
   qq: '861624449',
   password: 'windy',
-  avatar: '/src/assets/images/avatar-1.jpg',
+  avatar: userAvatar,
 }
 
 export default [

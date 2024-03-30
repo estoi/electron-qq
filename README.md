@@ -50,7 +50,15 @@ QQ9的高仿版, 欢迎Star
 ```text
 - 登录
 - 聊天(开发中)
-- 其他待开发
+```
+
+## TODO
+
+```text
+- emoji
+- 截图
+- 语音
+- 好友列表
 ```
 
 ## 截图
@@ -73,6 +81,7 @@ QQ9的高仿版, 欢迎Star
 ├─ src                # 源码
 │  ├─ assets          # 静态资源
 │  ├─ components      # 公共组件
+│  ├─ composables      # 组合函数
 │  ├─ layout          # 全局Layout
 │  ├─ router          # 路由
 │  ├─ store           # 全局store管理
@@ -94,4 +103,4 @@ bun run dev
 
 [MIT](https://github.com/estoi/electron-qq/blob/master/LICENSE)
 
-Copyright (c) 2024-present 
+Copyright (c) 2024-present

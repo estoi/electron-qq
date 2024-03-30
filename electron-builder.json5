@@ -3,9 +3,9 @@
  */
 {
   $schema: 'https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/app-builder-lib/scheme.json',
-  appId: 'YourAppID',
+  appId: 'com.windy.qq',
   asar: true,
-  productName: 'YourAppName',
+  productName: 'Windy',
   directories: {
     output: 'release/${version}',
   },
@@ -13,6 +13,7 @@
   mac: {
     target: ['dmg'],
     artifactName: '${productName}-Mac-${version}-Installer.${ext}',
+    icon: 'icon/icon.iconset/icon_256x256@2x.png',
   },
   win: {
     target: [
