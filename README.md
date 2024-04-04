@@ -47,19 +47,12 @@ QQ9的高仿版, 欢迎Star
 
 ## 功能
 
-```text
-- 登录
-- 聊天(开发中)
-```
-
-## TODO
-
-```text
-- emoji
-- 截图
-- 语音
-- 好友列表
-```
+- [x] 登录
+- [x] 文字聊天
+- [x] emoji
+- [] 截图
+- [] 语音消息
+- [] 好友列表
 
 ## 截图
 
@@ -67,6 +60,7 @@ QQ9的高仿版, 欢迎Star
 <img width="400" src="./src/assets/images/readme/home-1.png">
 <img width="400" src="./src/assets/images/readme/chat.png">
 <img width="400" src="./src/assets/images/readme/chat-2.png">
+<img width="400" src="./src/assets/images/readme/chat-3.png">
 
 ## 目录结构
 
