@@ -8,6 +8,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     ChartList: typeof import('./src/components/chartList/index.vue')['default']
+    EmojiPicker: typeof import('./src/components/emojiPicker/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     UserModal: typeof import('./src/components/userModal/index.vue')['default']

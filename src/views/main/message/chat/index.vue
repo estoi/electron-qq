@@ -4,6 +4,7 @@ import { Splitpanes, Pane } from 'splitpanes'
 import { useUserStore } from '@/store/modules/user'
 import { useMessagesStore } from '@/store/modules/messages'
 import { useDebounce } from '@/composables'
+import EmojiPicker from '@/components/emojiPicker/index.vue'
 
 const props = defineProps({
   chat: {
@@ -26,6 +27,7 @@ const isTop: Ref<boolean> = ref(false)
 const isNotice: Ref<boolean> = ref(false)
 const isShield: Ref<boolean> = ref(false)
 const scrollEl = ref<HTMLElement | null>(null)
+const chatRef = ref<HTMLElement | null>()
 const { y } = useScroll(scrollEl, { behavior: 'smooth' })
 
 onUpdated(() => {
@@ -68,6 +70,11 @@ const onEnter = (e: any) => {
       y.value = lastEl.offsetTop - 320
     })
   })()
+}
+
+const onSelect = (e: any) => {
+  const { native } = e
+  content.value += native
 }
 </script>
 <template>
@@ -198,23 +205,17 @@ const onEnter = (e: any) => {
           min-size="25"
           max-size="45"
         >
-          <div>
+          <div class="chat-emoji-parent">
             <div
               class="h-40px p-[0_10px] flex flex-items-center justify-between"
             >
-              <div>
+              <div ref="chatRef">
                 <var-space :size="[0, 0]">
                   <var-tooltip content="表情">
-                    <var-button
-                      text
-                      size="small"
-                    >
-                      <var-icon
-                        namespace="icon-font"
-                        name="biaoqing"
-                        :size="20"
-                      ></var-icon>
-                    </var-button>
+                    <emoji-picker
+                      :target="chatRef"
+                      @select-emoji="onSelect"
+                    ></emoji-picker>
                   </var-tooltip>
                   <var-tooltip content="截图">
                     <var-button
