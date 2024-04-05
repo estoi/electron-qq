@@ -1,9 +1,9 @@
 @font-face {
   font-family: 'iconfont'; /* Project id 4482106 */
   src:
-    url('../fonts/iconfont.woff2?t=1711620051235') format('woff2'),
-    url('../fonts/iconfont.woff?t=1711620051235') format('woff'),
-    url('../fonts/iconfont.ttf?t=1711620051235') format('truetype');
+    url('../fonts/iconfont.woff2?t=1712301200792') format('woff2'),
+    url('../fonts/iconfont.woff?t=1712301200792') format('woff'),
+    url('../fonts/iconfont.ttf?t=1712301200792') format('truetype');
 }
 
 .icon-font {
@@ -12,6 +12,10 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-font-haoyouguanli:before {
+  content: '\e62e';
 }
 
 .icon-font-qq:before {
