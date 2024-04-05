@@ -1,5 +1,19 @@
 <script setup lang="ts">
+import FriendList from '@/components/friendList/index.vue'
+
 const showDefault: Ref<boolean> = ref(true)
+
+const friends = [
+  {
+    title: '我的好友',
+  },
+  {
+    title: '同学',
+  },
+  {
+    title: '家人',
+  },
+]
 </script>
 <template>
   <div
@@ -78,11 +92,17 @@ const showDefault: Ref<boolean> = ref(true)
             </template>
           </var-cell>
         </div>
-        <var-divider />
+        <var-divider hairline />
         <div
-          class="mt-30px overflow-y-scroll"
+          class="overflow-y-scroll"
           style="height: 100%"
-        ></div>
+        >
+          <friend-list :options="friends">
+            <template #extra>
+              <span class="font-size-10px color-gray">99/100</span>
+            </template>
+          </friend-list>
+        </div>
       </var-col>
       <var-col :span="18">
         <div

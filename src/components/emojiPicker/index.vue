@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import data from '@emoji-mart/data'
+import data from '@emoji-mart/data/sets/14/twitter.json'
 import { Picker } from 'emoji-mart'
 
 const props = defineProps({
@@ -20,7 +20,7 @@ onMounted(() => {
       parent: emoji.value,
       searchPosition: 'none',
       locale: 'zh',
-      set: 'native',
+      set: 'twitter',
       theme: 'light',
       previewPosition: 'none',
       emojiSize: 20,

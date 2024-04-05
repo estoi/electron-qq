@@ -8,7 +8,9 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     ChartList: typeof import('./src/components/chartList/index.vue')['default']
+    CollapseMenu: typeof import('./src/components/collapseMenu/index.vue')['default']
     EmojiPicker: typeof import('./src/components/emojiPicker/index.vue')['default']
+    FriendList: typeof import('./src/components/friendList/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     UserModal: typeof import('./src/components/userModal/index.vue')['default']
@@ -17,6 +19,7 @@ declare module 'vue' {
     VarButton: typeof import('@varlet/ui')['_ButtonComponent']
     VarCell: typeof import('@varlet/ui')['_CellComponent']
     VarCol: typeof import('@varlet/ui')['_ColComponent']
+    VarCollapseTransition: typeof import('@varlet/ui')['_CollapseTransitionComponent']
     VarDivider: typeof import('@varlet/ui')['_DividerComponent']
     VarEllipsis: typeof import('@varlet/ui')['_EllipsisComponent']
     VarForm: typeof import('@varlet/ui')['_FormComponent']
