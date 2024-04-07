@@ -31,11 +31,19 @@ const routes: RouteRecordRaw[] = [
         path: 'friend',
         name: 'Friend',
         component: () => import('@/views/main/friend/index.vue'),
+        redirect: '/main/friend/profile',
         meta: {
           icon: 'haoyou',
           trigger: 'router',
           badge: false,
         },
+        children: [
+          {
+            path: 'profile',
+            name: 'Profile',
+            component: () => import('@/views/main/friend/profile/index.vue'),
+          },
+        ],
       },
       {
         path: 'zone',

@@ -10,10 +10,16 @@ interface Props {
 
 const props = defineProps<Props>()
 
+const emits = defineEmits(['open'])
+
 const expands: Ref<boolean[]> = ref([])
 
 const openList = (_: any, index: number) => {
   expands.value[index] = !expands.value[index]
+}
+
+const onOpen = (_: number) => {
+  emits('open', _)
 }
 
 onMounted(() => {
@@ -47,6 +53,7 @@ onMounted(() => {
             v-for="i of 10"
             :key="i"
             class="h-60px px-20px flex flex-items-center cursor-pointer hover:bg-#ebebeb"
+            @click="onOpen(i)"
           >
             <var-avatar :size="40"></var-avatar>
             <div class="ml-10px flex flex-col justify-start pt-5px">

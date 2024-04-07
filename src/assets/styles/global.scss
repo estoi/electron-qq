@@ -36,3 +36,16 @@
     }
   }
 }
+
+.move-enter-active {
+  animation: run-scale 0.1s ease-out 0s;
+}
+
+.move-leave-active {
+  animation: run-scale 0.1s ease-in 0s reverse;
+}
+
+.move-enter-from,
+.move-leave-to {
+  opacity: 0;
+}

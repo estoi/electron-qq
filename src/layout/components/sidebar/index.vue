@@ -90,6 +90,7 @@ const handleClick = (route: RouteRecordRaw) => {
           :offset-x="10"
         >
           <var-button
+            v-temporary
             text
             @click="handleClick(item)"
           >

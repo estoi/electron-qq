@@ -14,6 +14,10 @@ const friends = [
     title: '家人',
   },
 ]
+
+const openProfile = () => {
+  showDefault.value = false
+}
 </script>
 <template>
   <div
@@ -97,7 +101,10 @@ const friends = [
           class="overflow-y-scroll"
           style="height: 100%"
         >
-          <friend-list :options="friends">
+          <friend-list
+            :options="friends"
+            @open="openProfile"
+          >
             <template #extra>
               <span class="font-size-10px color-gray">99/100</span>
             </template>
