@@ -61,6 +61,8 @@ QQ9的高仿版, 欢迎Star
 <img width="400" src="./src/assets/images/readme/chat.png">
 <img width="400" src="./src/assets/images/readme/chat-2.png">
 <img width="400" src="./src/assets/images/readme/chat-3.png">
+<img width="400" src="./src/assets/images/readme/chat-4.png">
+<img width="400" src="./src/assets/images/readme/chat-5.png">
 
 ## 目录结构
 

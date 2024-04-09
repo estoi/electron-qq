@@ -26,7 +26,10 @@ onMounted(() => {
   >
     <div class="flex flex-items-center justify-between">
       <div class="flex flex-items-center">
-        <var-avatar :size="90"></var-avatar>
+        <var-avatar
+          :src="profile.avatar"
+          :size="90"
+        ></var-avatar>
         <div class="ml-10px">
           <p class="font-bold">{{ profile.name }}</p>
           <p class="color-gray font-size-12px my-8px">QQ {{ profile.qq }}</p>
