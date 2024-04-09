@@ -11,12 +11,27 @@ import star from '@/assets/images/star.png'
     class="w-full h-screen bg-white p-[70px_100px]"
     style="border-left: 1px solid #ebebeb"
   >
-    <div class="flex flex-items-center">
-      <var-avatar :size="90"></var-avatar>
-      <div class="ml-10px">
-        <p class="font-bold">Windy</p>
-        <p class="color-gray font-size-12px my-8px">QQ 861624449</p>
-        <p class="font-size-14px">在线</p>
+    <div class="flex flex-items-center justify-between">
+      <div class="flex flex-items-center">
+        <var-avatar :size="90"></var-avatar>
+        <div class="ml-10px">
+          <p class="font-bold">Windy</p>
+          <p class="color-gray font-size-12px my-8px">QQ 861624449</p>
+          <p class="font-size-14px">在线</p>
+        </div>
+      </div>
+      <div>
+        <var-button text>
+          <div>
+            <var-icon
+              :size="15"
+              namespace="icon-font"
+              name="dianzan"
+              color="#333"
+            ></var-icon>
+            <p class="font-size-10px color-#333">9999+</p>
+          </div>
+        </var-button>
       </div>
     </div>
     <var-divider margin="20px 0"></var-divider>
@@ -80,18 +95,34 @@ import star from '@/assets/images/star.png'
       />
     </div>
     <div class="flex flex-items-center justify-between font-size-14px">
-      <p>备注</p>
+      <p>
+        <var-icon
+          :size="14"
+          namespace="icon-font"
+          name="beizhu"
+          color="#333"
+        ></var-icon>
+        备注
+      </p>
       <div class="w-100px">
         <var-input
           :hint="false"
           :line="false"
           size="small"
-          placeholder="请输入文本"
+          placeholder="设置好友备注"
         />
       </div>
     </div>
     <div class="flex flex-items-center justify-between font-size-14px">
-      <p>好友分组</p>
+      <p>
+        <var-icon
+          :size="14"
+          namespace="icon-font"
+          name="haoyou"
+          color="#333"
+        ></var-icon>
+        好友分组
+      </p>
       <div class="w-100px">
         <var-select
           :hint="false"
@@ -113,7 +144,15 @@ import star from '@/assets/images/star.png'
     </div>
     <var-divider margin="20px 0"></var-divider>
     <div class="flex flex-items-center justify-between font-size-14px">
-      <p>QQ空间</p>
+      <p>
+        <var-icon
+          :size="14"
+          namespace="icon-font"
+          name="qzone"
+          color="#333"
+        ></var-icon>
+        QQ空间
+      </p>
       <div>
         <var-icon name="chevron-right" />
       </div>
