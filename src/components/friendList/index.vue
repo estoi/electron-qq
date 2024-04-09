@@ -2,7 +2,11 @@
 interface optionItem {
   icon?: string
   title: string
-  children?: Array<optionItem>
+  id: number
+  avatar?: string
+  status?: number
+  name?: string
+  list?: Array<optionItem>
 }
 interface Props {
   options: Array<optionItem>
@@ -18,13 +22,15 @@ const openList = (_: any, index: number) => {
   expands.value[index] = !expands.value[index]
 }
 
-const onOpen = (_: number) => {
-  emits('open', _)
+const onOpen = (friend: any) => {
+  emits('open', friend)
 }
 
 onMounted(() => {
-  props.options.forEach((_, index: number) => {
-    expands.value[index] = false
+  nextTick(() => {
+    props.options.forEach((_, index: number) => {
+      expands.value[index] = false
+    })
   })
 })
 </script>
@@ -44,27 +50,43 @@ onMounted(() => {
           :class="[expands[index] ? 'open' : '']"
         />
         <p class="flex-1 font-size-14px ml-10px">{{ item.title }}</p>
-        <slot name="extra"></slot>
+        <slot
+          name="extra"
+          :data="item"
+        ></slot>
       </div>
 
       <div>
         <var-collapse-transition :expand="expands[index]">
           <div
-            v-for="i of 10"
-            :key="i"
+            v-for="i of item.list"
+            :key="i.id"
             class="h-60px px-20px flex flex-items-center cursor-pointer hover:bg-#ebebeb"
             @click="onOpen(i)"
           >
-            <var-avatar :size="40"></var-avatar>
+            <var-avatar
+              :src="i.avatar"
+              :size="40"
+            ></var-avatar>
             <div class="ml-10px flex flex-col justify-start pt-5px">
-              <p class="font-size-12px">Windy</p>
+              <p
+                :class="[
+                  'font-size-12px',
+                  i.status === 1 ? 'color-black' : 'color-gray',
+                ]"
+              >
+                {{ i.name }}
+              </p>
               <p
                 class="flex flex-items-center font-size-10px color-gray mt-10px"
               >
                 [<i
-                  class="inline-block w-10px h-10px mx-2px rounded-50% bg-#6be192"
+                  :class="[
+                    'inline-block w-10px h-10px mx-2px rounded-50%',
+                    i.status === 1 ? ' bg-#6be192' : 'bg-gray/50',
+                  ]"
                 ></i
-                >在线]
+                >{{ i.status === 1 ? '在线' : '离线' }}]
               </p>
             </div>
           </div>

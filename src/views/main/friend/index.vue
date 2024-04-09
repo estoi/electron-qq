@@ -1,23 +1,46 @@
 <script setup lang="ts">
 import FriendList from '@/components/friendList/index.vue'
+import { useHttp } from '@/utils/http'
 
+const router = useRouter()
+const profile: Ref<any> = ref()
 const showDefault: Ref<boolean> = ref(true)
+const dataSource: any = reactive({
+  list: [],
+})
 
-const friends = [
-  {
-    title: '我的好友',
-  },
-  {
-    title: '同学',
-  },
-  {
-    title: '家人',
-  },
-]
-
-const openProfile = () => {
+const openProfile = (data: any) => {
   showDefault.value = false
+  profile.value = { ...data }
+  router.push({
+    name: 'Profile',
+  })
 }
+
+const getList = async () => {
+  const { data } = await useHttp('/friends', {
+    method: 'GET',
+  })
+  const { data: res } = data.value
+  const { groups } = res
+  dataSource.list = [...groups]
+}
+
+const getCount = (data: any): string => {
+  let count = 0
+  const allCount = data.list.length
+  data.list.forEach((item: any) => {
+    if (item.status === 1) {
+      count += 1
+    }
+  })
+
+  return `${count}/${allCount}`
+}
+
+onMounted(() => {
+  getList()
+})
 </script>
 <template>
   <div
@@ -102,11 +125,13 @@ const openProfile = () => {
           style="height: 100%"
         >
           <friend-list
-            :options="friends"
+            :options="dataSource.list"
             @open="openProfile"
           >
-            <template #extra>
-              <span class="font-size-10px color-gray">99/100</span>
+            <template #extra="{ data }">
+              <span class="font-size-10px color-gray">{{
+                getCount(data)
+              }}</span>
             </template>
           </friend-list>
         </div>
@@ -123,7 +148,15 @@ const openProfile = () => {
             color="#e9e9e9"
           ></var-icon>
         </div>
-        <router-view v-else> </router-view>
+        <router-view
+          v-else
+          v-slot="{ Component }"
+        >
+          <component
+            :is="Component"
+            :profile="profile"
+          ></component>
+        </router-view>
       </var-col>
     </var-row>
   </div>

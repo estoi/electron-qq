@@ -31,7 +31,6 @@ const routes: RouteRecordRaw[] = [
         path: 'friend',
         name: 'Friend',
         component: () => import('@/views/main/friend/index.vue'),
-        redirect: '/main/friend/profile',
         meta: {
           icon: 'haoyou',
           trigger: 'router',
