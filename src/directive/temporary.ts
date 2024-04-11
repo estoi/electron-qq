@@ -5,7 +5,7 @@ const temporaryDirective: Directive = {
   beforeMount(el) {
     el.addEventListener('click', () => {
       console.log('--------------------------------')
-      toast.warning('带开发')
+      toast.warning('待开发')
     })
   },
 }

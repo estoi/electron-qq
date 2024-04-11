@@ -131,6 +131,7 @@ const handleClick = (route: RouteRecordRaw) => {
       <var-button
         v-for="item of settings"
         :key="item.key"
+        v-temporary
         text
       >
         <var-icon

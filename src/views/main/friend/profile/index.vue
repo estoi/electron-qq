@@ -1,11 +1,12 @@
 <script lang="ts" setup>
 import { format } from 'date-fns'
+// import { useHttp } from '@/utils/http'
+import { useConstellation } from '@/composables'
 
 import crown from '@/assets/images/crown.png'
 import sun from '@/assets/images/sun.png'
 import moon from '@/assets/images/moon.png'
 import star from '@/assets/images/star.png'
-// import svip from '@/assets/images/svip.png'
 
 const props = defineProps({
   profile: {
@@ -14,8 +15,13 @@ const props = defineProps({
   },
 })
 
-onMounted(() => {
+onMounted(async () => {
   console.log(props.profile)
+  // const { data } = await useHttp('/groups', {
+  //   method: 'GET',
+  // })
+  // const { data: res } = data.value
+  // console.log(res)
 })
 </script>
 
@@ -64,15 +70,18 @@ onMounted(() => {
         <var-icon
           :size="12"
           namespace="icon-font"
-          name="nan"
-          color="#3e99f7"
+          :name="profile.gender === 1 ? 'nan' : 'nv'"
+          :color="profile.gender === 1 ? '#3e99f7' : '#f0bcbf'"
         ></var-icon>
         <span class="ml-3px">{{ profile.gender === 1 ? '男' : '女' }}</span>
       </p>
       <var-divider vertical />
       <p>{{ profile.age }}岁</p>
       <var-divider vertical />
-      <p>{{ format(profile.birthday, 'MM月dd日') }} 射手座</p>
+      <p>
+        {{ format(profile.birthday, 'MM月dd日') }}
+        {{ useConstellation(profile.birthday) }}
+      </p>
       <var-divider vertical />
       <p>现居 {{ profile.location?.replace(' ', '·') }}</p>
     </div>
@@ -184,6 +193,7 @@ onMounted(() => {
     <div class="my-40px">
       <var-space justify="center">
         <var-button
+          v-temporary
           class="w-100px"
           text
           outline
@@ -191,6 +201,7 @@ onMounted(() => {
           >分享</var-button
         >
         <var-button
+          v-temporary
           class="w-100px"
           text
           outline

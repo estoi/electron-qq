@@ -16,11 +16,15 @@ interface FriendsList {
   group: string | number
 }
 
-interface FriendsGroups {
+interface GroupItem {
   id: string | number
   title: string
   count?: number
   list: Array<FriendsList>
+}
+
+interface FriendsGroups {
+  groups: Array<GroupItem>
 }
 
 const friends: Array<FriendsGroups> = Mock.mock({
@@ -32,7 +36,7 @@ const friends: Array<FriendsGroups> = Mock.mock({
       'list|10-50': [
         {
           'id|+1': 1,
-          name: '@csentence(5)',
+          name: '@csentence(3)',
           status: '@natural(1, 2)',
           avatar: '@image("100x100")',
           qq: '@natural(100000000, 1000000000)',
@@ -57,6 +61,20 @@ export default [
       return {
         code: 200,
         data: friends,
+      }
+    },
+  },
+  {
+    url: '/api/groups',
+    method: 'get',
+    response: () => {
+      const groups = friends.groups.map(({ id, title }) => ({
+        id,
+        title,
+      }))
+      return {
+        code: 200,
+        data: [],
       }
     },
   },

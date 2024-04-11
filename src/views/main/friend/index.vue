@@ -80,6 +80,7 @@ onMounted(() => {
             </template>
           </var-input>
           <var-button
+            v-temporary
             size="small"
             text
             outline
@@ -89,6 +90,7 @@ onMounted(() => {
         </div>
         <div class="px-20px mt-15px">
           <var-button
+            v-temporary
             block
             text
             outline
@@ -103,6 +105,7 @@ onMounted(() => {
         </div>
         <div class="px-10px mt-15px">
           <var-cell
+            v-temporary
             ripple
             title="好友通知"
           >
@@ -111,6 +114,7 @@ onMounted(() => {
             </template>
           </var-cell>
           <var-cell
+            v-temporary
             ripple
             title="群通知"
           >
