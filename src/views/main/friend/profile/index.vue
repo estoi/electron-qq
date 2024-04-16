@@ -42,7 +42,7 @@ onMounted(async () => {
           <p class="flex flex-items-center font-size-14px color-gray">
             <i
               :class="[
-                'inline-block w-10px h-10px mx-2px rounded-50%',
+                'inline-block w-12px h-12px mx-2px rounded-50%',
                 profile.status === 1 ? ' bg-#6be192' : 'bg-gray/50',
               ]"
             ></i

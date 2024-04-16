@@ -77,7 +77,7 @@ QQ9的高仿版, 欢迎Star
 ├─ src                # 源码
 │  ├─ assets          # 静态资源
 │  ├─ components      # 公共组件
-│  ├─ composables      # 组合函数
+│  ├─ composables     # 组合函数
 │  ├─ layout          # 全局Layout
 │  ├─ router          # 路由
 │  ├─ store           # 全局store管理

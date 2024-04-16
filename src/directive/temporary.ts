@@ -4,7 +4,6 @@ import { toast } from 'vue-sonner'
 const temporaryDirective: Directive = {
   beforeMount(el) {
     el.addEventListener('click', () => {
-      console.log('--------------------------------')
       toast.warning('待开发')
     })
   },
